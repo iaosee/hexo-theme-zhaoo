@@ -69,7 +69,7 @@
 ## 特性
 
 - [x] 设计理念：简约 & 响应式 & 动效
-- [x] 评论：`Gitalk`、`Valine`、`畅言`
+- [x] 评论：`Gitalk`、`Valine`、`畅言`、`Giscus`
 - [x] 反馈：[DaoVoice](http://www.daovoice.io/)、[腾讯兔小巢](https://txc.qq.com/)
 - [x] 统计：`LeanCloud`、`百度`、`CNZZ`、`谷歌` 及 SEO优化
 - [x] 深色模式

@@ -119,7 +119,7 @@ gray:
 # --------------------------------------------------
 
 # Excerpt
-excerpt: 
+excerpt:
   enable: true
 
 # Post Image
@@ -181,7 +181,7 @@ galleries:
 
 comments:
   enable: false
-  type: valine # gitalk | valine | changyan
+  type: valine # gitalk | valine | changyan | giscus
   button: true
 
 # Gitalk
@@ -205,6 +205,18 @@ valine:
 changyan:
   appId:
   conf:
+
+# https://giscus.app/zh-CN
+giscus:
+  repo:
+  repoId:
+  mapping: pathname
+  category:
+  categoryId:
+  inputPosition: top
+  reactionsEnabled: 1
+  emitMetadata: 0
+  lang: zh-CN
 
 # --------------------------------------------------
 # Plugin settings
