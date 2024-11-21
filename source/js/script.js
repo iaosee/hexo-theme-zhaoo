@@ -165,9 +165,9 @@ console.log("%c Github %c", "background:#333333; color:#ffffff", "", "https://gi
       $(".preview-image").css("background-image", "url(" + CONFIG.preview.background.api + ")");
 
       // FIX unsplash api url
-      var data_contents = CONFIG.preview.background.data_contents && JSON.parse(CONFIG.preview.background.data_contents);
-      $.get(CONFIG.preview.background.api, function(resData, status, response) {
-        if (response.getResponseHeader('Content-Type') === 'application/json') {
+      if (CONFIG.preview.background.return_type === 'json') {
+        var data_contents = CONFIG.preview.background.data_contents && JSON.parse(CONFIG.preview.background.data_contents);
+        $.get(CONFIG.preview.background.api, function(resData, status, response) {
           let result = resData;
           if (data_contents.length > 0) {
             data_contents.forEach(function (item) {
@@ -177,8 +177,8 @@ console.log("%c Github %c", "background:#333333; color:#ffffff", "", "https://gi
           if (result) {
             $(".preview-image").css("background-image", "url(" + result + ")");
           }
-        }
-      });
+        });
+      }
     },
     doSearch: function (path, search_id, content_id) {
       // https://segmentfault.com/a/1190000011917419
