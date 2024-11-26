@@ -128,6 +128,9 @@ console.log("%c Github %c", "background:#333333; color:#ffffff", "", "https://gi
       },
     },
     motto: function () {
+      if(!$("#motto").length) {
+        return;
+      }
       if (CONFIG.preview.motto.api) {
         var data_contents = CONFIG.preview.motto.data_contents && JSON.parse(CONFIG.preview.motto.data_contents);
         $.get(CONFIG.preview.motto.api, function (result) {
@@ -161,8 +164,13 @@ console.log("%c Github %c", "background:#333333; color:#ffffff", "", "https://gi
       }
     },
     background: function () {
+      // fix: If the DOM element is null, the API will not be called.
+      var previewImage = $("#preview-image");
+      if(!previewImage.length) {
+        return;
+      }
       if (!CONFIG.preview.background.api) return;
-      $(".preview-image").css("background-image", "url(" + CONFIG.preview.background.api + ")");
+      previewImage.css("background-image", "url(" + CONFIG.preview.background.api + ")");
 
       // FIX unsplash api url
       if (CONFIG.preview.background.return_type === 'json') {
@@ -175,7 +183,7 @@ console.log("%c Github %c", "background:#333333; color:#ffffff", "", "https://gi
             });
           }
           if (result) {
-            $(".preview-image").css("background-image", "url(" + result + ")");
+            previewImage.css("background-image", "url(" + result + ")");
           }
         });
       }
