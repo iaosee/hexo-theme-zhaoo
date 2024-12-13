@@ -134,14 +134,8 @@ console.log("%c Github %c", "background:#333333; color:#ffffff", "", "https://gi
       if (CONFIG.preview.motto.api) {
         var data_contents = CONFIG.preview.motto.data_contents && JSON.parse(CONFIG.preview.motto.data_contents);
         $.get(CONFIG.preview.motto.api, function (result) {
-          if (data_contents.length > 0) {
-            data_contents.forEach(function (item) {
-              result = result[item];
-            });
-          }
-          if (result) {
-            fn.printMotto(result);
-          }
+          var result = ZHAOO.utils.getValueByPath(result, data_contents, '')
+          fn.printMotto(result);
         });
       } else {
         fn.printMotto(CONFIG.preview.motto.default);
@@ -176,15 +170,8 @@ console.log("%c Github %c", "background:#333333; color:#ffffff", "", "https://gi
       if (CONFIG.preview.background.return_type === 'json') {
         var data_contents = CONFIG.preview.background.data_contents && JSON.parse(CONFIG.preview.background.data_contents);
         $.get(CONFIG.preview.background.api, function(resData, status, response) {
-          let result = resData;
-          if (data_contents.length > 0) {
-            data_contents.forEach(function (item) {
-              result = result[item];
-            });
-          }
-          if (result) {
-            previewImage.css("background-image", "url(" + result + ")");
-          }
+          var result = ZHAOO.utils.getValueByPath(resData, data_contents, '')
+          previewImage.css("background-image", "url(" + result + ")");
         });
       }
     },
